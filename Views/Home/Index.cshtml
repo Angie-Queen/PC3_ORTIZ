@@ -1,8 +1,58 @@
-﻿@{
+﻿@model List<Productos>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Productos registrados</h1>
+
+    
+<br><br>
+    @if (Model.Count == 0)
+           {
+             <div class="position-relative">
+                <div style="color: red;" class="text-center"><h2>Aún no se ha registrado ningun producto, por favor ve a la seccion de agregar productos en el menu superior y agrega todos los productos que desees visualizar</h2></div>
+             </div>
+              
+          }
+
+    
 </div>
+<div class="container">
+  <div class="row">
+
+      
+          
+
+          @foreach (var productos in Model)
+        {
+
+
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+              <img src="@productos.imagen" class="card-img-top" width="200"px height="250"px>
+              <div class="card-body">
+                <h5 class="card-title">@productos.nombre</h5>
+
+                <label>Descripcion : @productos.descripcion</label><br>
+                <label>Precio : S/. @productos.precio</label><br>
+                <label>Celular : @productos.celular</label><br>
+                <label>Lugar : @productos.lugarcompra</label><br>
+                <label>Usuario : @productos.usuario</label><br>
+                <td>
+                <form action="/Home/Eliminar" method="post">
+                  <input type="hidden" name="Id" value="@productos.id"/>
+                <button class="btn btn-dark">Eliminar</button>
+                </form>
+                </td>
+              </div>
+            </div>
+
+        </div>
+
+ 
+
+
+        }
+        </div>
+    </div>
