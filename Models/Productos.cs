@@ -20,5 +20,6 @@ namespace PC3_ORTIZ.Models
         public string lugarcompra { get; set; }
         [Required]
         public string usuario { get; set; }
+        public DateTime fechaRec { get; set;}
     }
 }

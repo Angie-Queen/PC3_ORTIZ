@@ -22,6 +22,7 @@ namespace PC3_ORTIZ.Controllers
 
         public IActionResult Index()
         {
+            DateTime fecha=DateTime.Now;
             var productos=_context.Productos.ToList();
             return View(productos);
         }
